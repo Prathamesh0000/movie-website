@@ -6,10 +6,15 @@ $("#recentAddedMovie").click(function(event) {
   var recents = JSON.parse(localStorage.getItem("recentAddedMovies"));
   debugger;
   var queryParams = [];
-  for (let i = 0; i < recents.length; i++) {
-    queryParams.push("id=" + recents[i]);
+  if(recents){
+    for (let i = 0; i < recents.length; i++) {
+      queryParams.push("id=" + recents[i]);
+    }
+    request().getData(queryParams, "Recently Added movies");
+  }else{
+    alert('No movie added.Please add new movies')
   }
-  request().getData(queryParams, "Recently Added movies");
+
 });
 function loadHome() {
   request().getData(["_page=1", "_limit=10"], "Top 10 movies of all time");
