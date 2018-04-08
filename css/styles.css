@@ -142,7 +142,7 @@ textarea:focus {
   height: 25px;
   border-radius: 50%;
   background-color: #0ba085;
-  left: -12px;
+  right: -12px;
   top: -12px;
 }
 .result-container .results .thumbnail i::before {
