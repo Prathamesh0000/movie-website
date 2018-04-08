@@ -1,0 +1,242 @@
+#home {
+  font-style: oblique;
+  font-weight: 900;
+  font-size: 180%;
+}
+button {
+  padding: 6px 10px;
+  background: #0ba085;
+  font-size: 17px;
+  border: none;
+  color: white;
+  border-radius: 25%;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(77, 160, 131, 0.71);
+}
+button:hover {
+  background-color: rgba(81, 203, 238, 1);
+}
+input,
+textarea {
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+  border: 2px solid #0ba085;
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+input[type="text"]:focus,
+textarea:focus {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.hide {
+  display: none;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.nav {
+  z-index: 2;
+  background-color: #0ba085;
+  width: 100%;
+  position: fixed;
+}
+
+.nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav li {
+  /* float: left; */
+  /* width: 15%; */
+  margin: auto;
+  width: 200px;
+}
+
+.nav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 30px 40px;
+  text-decoration: none;
+}
+
+.nav li a:hover {
+  background-color: rgba(168, 232, 251, 0.47);
+}
+.nav-small #home {
+  font-size: 170%;
+}
+.nav-small li a {
+  padding: 12px 20px;
+}
+.main {
+  padding-top: 130px;
+}
+.search {
+  margin: 0 auto;
+  position: relative;
+  width: 70%;
+}
+.search-container {
+  padding-top: 30px;
+  padding-bottom: 50px;
+}
+.search-container button {
+  position: absolute;
+  top: 25px;
+  right: 22px;
+  border-radius: 25%;
+}
+
+.search-container input[type="text"] {
+  width: 95%;
+  padding: 20px 20px 20px 30px;
+}
+.search-container input[type="text"]:focus + button {
+  background-color: rgba(81, 203, 238, 1);
+}
+
+.result-container {
+  padding: 25px 60px;
+}
+
+.result-container :last-child::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+.result-container .filter {
+  padding: 15px 45px;
+}
+.result-container .filter button {
+  float: right;
+  padding: 6px 22px;
+  border-radius: 12%;
+  margin: 0px 8px;
+}
+.result-container .results .thumbnail {
+  width: 250px;
+  padding: 25px;
+  position: relative;
+  float: left;
+}
+.result-container .results .thumbnail i {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #0ba085;
+  left: -12px;
+  top: -12px;
+}
+.result-container .results .thumbnail i::before {
+  left: 6px;
+  position: relative;
+  top: 4px;
+  color: white;
+}
+.result-container .results .thumbnail:hover > i {
+  display: block;
+}
+.result-container .results .thumbnail i::before :hover {
+  color: rgba(81, 203, 238, 1);
+}
+.result-container .results .thumbnail:hover {
+  border-radius: 3px;
+  text-decoration: none;
+  box-shadow: 0 7px 17px 0 rgba(77, 160, 131, 0.57);
+}
+.result-container .results .thumbnail img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 250px;
+  height: 350px;
+}
+.result-container .results .image-div {
+  position: relative;
+}
+
+.result-container .results .thumbnail .image-div img::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  content: "";
+  background: url("../NoImageFound.png");
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+.result-container .results .thumbnail .thumbnail-content {
+  height: 100px;
+}
+
+.result-container .results .thumbnail h3,
+h4 {
+  text-align: center;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #1d2b3145;
+  width: 100%;
+  height: 100%;
+}
+.modal .modal-content {
+  background-color: #fefefe;
+  margin: 7% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  border-radius: 1%;
+}
+.modal form {
+  padding-left: 5%;
+  width: 80%;
+  margin: 40px auto;
+}
+.modal .modal-content .modal-header {
+  margin: auto;
+  padding: 5px 20px;
+}
+.modal .modal-content h1 {
+  text-align: center;
+}
+.modal input,
+textarea {
+  display: block;
+  width: 90%;
+}
+modal input:invalid:after {
+  position: absolute;
+  content: "✖";
+  padding-left: 5px;
+}
+.modal .modal-footer button {
+  float: right;
+}
+.modal :first-child ::after {
+  content: "";
+  display: block;
+  clear: both;
+}

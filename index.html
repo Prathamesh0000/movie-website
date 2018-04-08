@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Movie App</title>
+    <meta name="description" content="Movie App">
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.0/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="nav nav-small">
+        <ul>
+            <li>
+                <a class="hoverMenu" id="home">
+                    <i class="fa fa-video-camera" aria-hidden="true"></i>
+                    <span>Movies.in</span>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+    <div class="main">
+        <div class="search-container">
+            <div class="search">
+                <form id='search-form'>
+                    <input type="text" id='search-input' placeholder="Search.." name="search">
+                    <button type="submit" class="button" id='search-submit'>
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="result-container">
+            <div class="filter">
+                <button type="button" class="button add" id='addMovie'>Add</button>
+                <button type="button" class="button recentAddedMovie" id='recentAddedMovie'>Recently Added</button>
+            </div>
+            <div class='section'>
+                <div class="movieheader">
+                    <h1>Top 10 movies of all time</h1>
+                </div>
+                <div class="results">
+                </div>
+            </div>
+        </div>
+        <div class='modal hide' id="modalAdd">
+            <div class="modal-content">
+                <i class="fa fa-close close" id='closeModal'></i>
+                <div class='modal-header'>
+                    <h1>Add movie</h1>
+                </div>
+                <form id='add-form'>
+                    <input type="text" id='add-title' placeholder="Title" name="add">
+                    <input type="date" id='add-year' placeholder="Year of release" name="add">
+                    <input type="url" id='add-image' placeholder="Image path" name="add">
+                    <!-- <textarea type="text" id='add-discription' placeholder="Titke" name="add"></textarea> -->
+                </form>
+                <div class='modal-footer'>
+                    <button class="button add" id='addMovieModal'>Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
