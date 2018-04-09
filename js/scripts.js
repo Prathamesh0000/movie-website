@@ -1,10 +1,16 @@
 $(function() {
   loadHome();
 });
+$(window).scroll(function() { 
+  if ($(document).scrollTop() > 100) {
+      $('.nav').removeClass('nav-large');
+    } else {
+      $('.nav').addClass('nav-large');
+    }
+  })
 $("#home").click(loadHome);
 $("#recentAddedMovie").click(function(event) {
   var recents = JSON.parse(localStorage.getItem("recentAddedMovies"));
-  debugger;
   var queryParams = [];
   if(recents){
     for (let i = 0; i < recents.length; i++) {
@@ -24,17 +30,12 @@ $("#search-form").submit(function(event) {
   event.preventDefault();
   request().getData(["q=" + searchString]);
 });
-
-$(" .delete").click(function(event) {
-  debugger;
-  confirm(
-    "Do you want to delete" +
-      $(this)
-        .last()
-        .children("h3")
-        .html()
-  );
-  //   request().deleteData($(this).attr("movie-id"));
+$(".result-container").on('click','.delete',function(event) {
+  if (confirm("Do you want to delete " + $(this).attr("movie-name")+'?')) {
+    request().deleteData($(this).attr("movie-id"), this);
+  } else {
+    return false;
+  }
 });
 
 $("#addMovie").click(function(event) {
@@ -52,7 +53,6 @@ $("#closeModal").click(function(event) {
 });
 
 function updateDom(data, header) {
-  debugger;
   $(".section").html(
     '<div class="movieheader"></div> <div class="results"> </div>'
   );
@@ -75,20 +75,18 @@ function updateDom(data, header) {
           data[i].title +
           '"></i><div class="image-div"><img src="' +
           data[i].image +
-          '"> </div><div class="thumbnail-content"><h3>' +
+          '"> </div><div class="thumbnail-content"><h4>' +
           data[i].title +
-          "</h3> <h4>" +
+          "</h4> <h5>" +
           data[i].year +
-          "</h4> </div> </div>"
+          "</h5> </div> </div>"
       )
     );
-    data[i];
   }
 }
 
 function request() {
   var api = "http://localhost:3000/list";
-  var data;
   function getData(searchParams, header) {
     var url = api + "?";
     for (let i = 0; i < searchParams.length; i++) {
@@ -99,16 +97,14 @@ function request() {
       type: "GET",
       crossDomain: true,
       success: function(data) {
-        // console.log(data);
         updateDom(data, header);
-        $(" .delete").click(function(event) {
-          debugger;
-          if (confirm("Do you want to delete" + $(this).attr("movie-name"))) {
-            request().deleteData($(this).attr("movie-id"), this);
-          } else {
-            return false;
-          }
-        });
+        // $(" .delete").click(function(event) {
+        //   if (confirm("Do you want to delete " + $(this).attr("movie-name")+'?')) {
+        //     request().deleteData($(this).attr("movie-id"), this);
+        //   } else {
+        //     return false;
+        //   }
+        // });
       },
       error: function() {
         console.log("failed to search!");
@@ -116,11 +112,10 @@ function request() {
     });
   }
   function addData(data) {
-    //   console.log(data)
     var message = "";
     for (var i in data) {
       if (!data[i]) {
-        message += " " + i;
+        message += ", " + i;
       }
     }
     if (message !== "") {
@@ -135,8 +130,6 @@ function request() {
       data: data,
       crossDomain: true,
       success: function(data) {
-        // console.log(data);
-        debugger;
         var recent = localStorage.getItem("recentAddedMovies");
         if (!recent) {
           recent = [data.id];
@@ -160,7 +153,6 @@ function request() {
       type: "DELETE",
       crossDomain: true,
       success: function(data) {
-        // console.log(data);
         $(that)
           .parent()
           .remove();
