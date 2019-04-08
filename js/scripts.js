@@ -10,6 +10,7 @@ $(window).scroll(function() {
   })
 $("#home").click(loadHome);
 $("#recentAddedMovie").click(function(event) {
+  debugger
   var recents = JSON.parse(localStorage.getItem("recentAddedMovies"));
   var queryParams = [];
   if(recents){
